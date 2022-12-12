@@ -4,14 +4,13 @@ import '../styles/Quote.scss'
 function Quote (props) {
 	const [text, setText] = useState('');
 	const [author, setAuthor] = useState('');
-	const [color, setColor] = useState('');
 	const [url, setUrl] = useState('');
 
 	const randomQuote = Math.floor(Math.random() * 102);
 	const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
 
 	useEffect(() => {
-		changeQuote();
+		changeQuote(); // eslint-disable-next-line
   }, []);
 
 	const changeQuote = () => {
@@ -19,7 +18,6 @@ function Quote (props) {
 			props.quotes[randomQuote].quote : '');
 		setAuthor(props.quotes[randomQuote].author ?
 			props.quotes[randomQuote].author : '');
-		setColor(randomColor);
 		props.onHandleChange(randomColor);
 		setUrl(encodeURI(
 			`https://twitter.com/intent/tweet?hashtags=quotes&related=RyzenRanger&text=${props.quotes[randomQuote].quote}`
